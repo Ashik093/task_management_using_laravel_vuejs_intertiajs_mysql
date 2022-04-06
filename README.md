@@ -1,0 +1,2 @@
+# task_management_using_laravel_vuejs_intertiajs_mysql
+ A taskmanagement using laravel,vuejs,inertiajs
