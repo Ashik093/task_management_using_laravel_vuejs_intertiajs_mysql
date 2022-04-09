@@ -1,6 +1,6 @@
 <script setup>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head,Link } from '@inertiajs/inertia-vue3';
 defineProps({
     tasks:Object
 })
@@ -27,6 +27,7 @@ defineProps({
                                     <th>Description</th>
                                     <th>Date</th>
                                     <th>Duration</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,6 +36,7 @@ defineProps({
                                     <td class="p-6">{{task.description}}</td>
                                     <td class="p-6">{{task.date}}</td>
                                     <td class="p-6">{{task.duration}}</td>
+                                    <td class="p-6"> <Link :href="route('task.edit',task.id)" class="underline text-sm text-red-600 hover:text-gray-900">Edit</Link> | <Link :href="route('task.delete',task.id)" class="underline text-sm text-red-600 hover:text-gray-900">Delete</Link></td>
                                 </tr>
                             </tbody>
                         </table>

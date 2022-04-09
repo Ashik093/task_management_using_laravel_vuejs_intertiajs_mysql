@@ -34,9 +34,10 @@ Route::group(['middleware'=>'auth','verified'],function(){
     Route::get('/task',[TaskController::class,'index'])->name('task');
     Route::get('/task/create',[TaskController::class,'create'])->name('task.create');
     Route::post('/task/store',[TaskController::class,'store'])->name('task.store');
+    Route::get('/task/edit/{id}',[TaskController::class,'edit'])->name('task.edit');
+    Route::get('/task/delete/{id}',[TaskController::class,'destroy'])->name('task.delete');
+    Route::post('/task/update/{id}',[TaskController::class,'update'])->name('task.update');
+
 });
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

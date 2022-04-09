@@ -40,4 +40,34 @@ class TaskController extends Controller
         
         return Redirect::route('task');
     }
+    
+    public function edit($id)
+    {
+        $task = Task::find($id);
+        return Inertia::render('TaskEdit',[
+            'task'=>$task
+        ]);
+    }
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'date' => 'required',
+            'duration' => 'required|numeric',
+            'description' => 'required',
+        ]);
+        $task = Task::find($id);
+        $task->title = $request->title;
+        $task->date = $request->date;
+        $task->duration = $request->duration;
+        $task->description = $request->description;
+        $task->save();
+        return Redirect::route('task');
+    }
+    public function destroy($id)
+    {
+        $task = Task::find($id);
+        $task->delete();
+        return Redirect::route('task');
+    }
 }
